@@ -9,9 +9,9 @@ import httplib
 import random
 
 class TFS_Restful:
-    def __init__(self, appkey):
+    def __init__(self, web_root_server, appkey):
         self.appkey = appkey
-        self.web_root_server = 'restful-store.vip.tbsite.net:3800' 
+        self.web_root_server = web_root_server 
         self.req_count = 0
         self.TfsProxyServer = []
         self.set_TfsProxyServer()

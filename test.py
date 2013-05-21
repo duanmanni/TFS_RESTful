@@ -43,8 +43,9 @@ def test_delete(client):
 
 if __name__ == "__main__":
     # appkey, keep it secret 
-    appkey = sys.argv[1] 
-    client = TFS_Restful( appkey)
+    web_root_server = sys.argv[1] 
+    appkey = sys.argv[2] 
+    client = TFS_Restful(web_root_server,  appkey)
     print client.req_count, client.TfsProxyServer
 
     tfsname = "T4WhVyXcBXXXXXXXXX"
