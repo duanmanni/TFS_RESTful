@@ -28,7 +28,7 @@ class TFS_Restful:
 
     def do_tfs_request(self, method, url, data=None, headers={}):
         try :
-            proxy = self.TfsProxyServer[random.randint(0, len(self.TfsProxyServer))]
+            proxy = self.TfsProxyServer[random.randint(0, len(self.TfsProxyServer)-1)]
             conn = httplib.HTTPConnection(proxy)
             conn.request(method, url, data, headers)
             rs = conn.getresponse()
