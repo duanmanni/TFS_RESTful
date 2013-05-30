@@ -17,8 +17,8 @@ def test_get_meta(client, tfsname):
 
 def test_get_data(client, tfsname):
     print 'test get data'
-    rsp = client.get_tfs_data(tfsname)
-    if rsp:
+    status, rsp = client.get_tfs_data(tfsname)
+    if status == 200 and rsp:
         print len(rsp)
 
 def test_write(client):
@@ -48,10 +48,10 @@ if __name__ == "__main__":
     client = TFS_Restful(web_root_server,  appkey)
     print client.req_count, client.TfsProxyServer
 
-    tfsname = "T4WhVyXcBXXXXXXXXX"
+    tfsname = "T4V7tyXhXXXXcKmrYc"
     test_get_meta(client, tfsname)
 
-    #test_get_data(client, tfsname)
+    test_get_data(client, tfsname)
 
     #test_write(client)
 

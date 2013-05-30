@@ -34,17 +34,17 @@ class TFS_Restful:
             rs = conn.getresponse()
             if rs.status != 200:
                 conn.close()
-                return None
+                return rs.status, None
             data  = rs.read()
             conn.close()
             self.req_count -= 1
             if self.req_count <= 0 :
                 self.set_TfsProxyServer()
-            return data 
+            return rs.status, data 
         except httplib.HTTPException:
-            return None
+            return 503, None
         except :
-            return None 
+            return 500, None 
 
     def parse_server(self, data):
         if not data:
