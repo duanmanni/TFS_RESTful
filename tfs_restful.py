@@ -82,15 +82,14 @@ class TFS_Restful:
         url = "/v1/%s/metadata/%s" %  (self.appkey, tfsname)
         if type == 1:
             url = "%s?type=1" % (url)
-        rsp = self.do_tfs_request('GET', url)
-        return rsp
+        status, rsp = self.do_tfs_request('GET', url)
+        return status, rsp
 
     # GET /v1/appkey/TfsFileName HTTP/1.1 
     def get_tfs_data(self, tfsname):
         url = "/v1/%s/%s" %  (self.appkey, tfsname)
-        rsp = self.do_tfs_request('GET', url)
-        return rsp
-        pass
+        status, rsp = self.do_tfs_request('GET', url)
+        return status, rsp
    
     # suffix=, tfs will set the suffix
     # simple_name=1, make reading require suffix
@@ -108,15 +107,15 @@ class TFS_Restful:
         else :
             url = "/v1/%s" %  (self.appkey)
 
-        rsp = self.do_tfs_request('POST', url, data)
-        return rsp
+        status, rsp = self.do_tfs_request('POST', url, data)
+        return status, rsp
     
     # hide=1, set tfs status to be hidden beside deleted
     def del_tfs(self, tfsname, hide=0):
         url = "/v1/%s/%s" %  (self.appkey, tfsname)
         if hide == 0:
             url = "%s?hide=1" % (url)
-        rsp = self.do_tfs_request('DELETE', url)
-        return rsp
+        status, rsp = self.do_tfs_request('DELETE', url)
+        return status, rsp
 
 
