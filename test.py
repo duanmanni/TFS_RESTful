@@ -24,7 +24,7 @@ def test_get_data(client, tfsname):
 def test_write(client):
     print 'test write'
     data = 'test tfs restful write, by zhiqi 2013-05-20 '
-    rsp = client.write_tfs(data, suffix='.outimg', simple_name=0)
+    status, rsp = client.write_tfs(data, suffix='.outimg', simple_name=0)
     print 'write rsp: ', rsp
     st = eval(rsp) 
     tfs = st['TFS_FILE_NAME']
@@ -34,7 +34,7 @@ def test_write(client):
 def test_delete(client):
     print 'test delete'
     data = 'test tfs restful delete, by zhiqi 2013-05-20 '
-    rsp = client.write_tfs(data, suffix='.outimg')
+    status, rsp = client.write_tfs(data, suffix='.outimg')
     st = eval(rsp)
     tfs = st['TFS_FILE_NAME']
     print tfs
